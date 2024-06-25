@@ -43,6 +43,7 @@ public:
 	
 private:
 	CImage m_CImage;
+
 	CYachtDiceDlg* m_pParentDlg;
 	CEdit m_edit_username;
 

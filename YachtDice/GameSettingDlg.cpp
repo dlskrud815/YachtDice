@@ -114,13 +114,16 @@ void GameSettingDlg::OnBnClickedOkBtn()
 		gamemanager->SetUsername(m_username);
 		gamemanager->SetRadio(m_radio);
 
-		GamePlayDlg gamePlayDlg;
-		gamePlayDlg.SetGameManager(gamemanager);
-
 		if (m_pParentDlg)
 		{
 			m_pParentDlg->HideForm_GameSettingDlg();
+
+			// 부모 다이얼로그에 접근하여 GamePlayDlg 객체를 초기화하고 설정
 			m_pParentDlg->AllocForm_GameSettingDlg();
+
+			m_pParentDlg->GetGamePlayDlg()->SetGameManager(gamemanager);
+			m_pParentDlg->GetGamePlayDlg()->SetPlayer1Name();
+
 			m_pParentDlg->ShowForm_GamePlayDlg();
 		}
 	}

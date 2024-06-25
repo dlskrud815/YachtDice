@@ -44,6 +44,8 @@ private:
 	GamePlayDlg* m_GamePlayDlg;
 
 public:
+	GamePlayDlg* GetGamePlayDlg() { return m_GamePlayDlg; }
+
 	void AllocForm_GameSettingDlg();
 	void AllocForm_GameMainDlg();
 	void AllocForm_GamePlayDlg();

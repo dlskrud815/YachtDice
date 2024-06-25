@@ -35,10 +35,12 @@ public:
 	virtual void OnInitialUpdate();
 
 	void SetGameManager(GameManager* gamemanager);
-
+	void SetPlayer1Name();
 	void SetParentDlg(CYachtDiceDlg* pParentDlg);
 
 private:
+	CImage m_CImage;
+
 	GameManager* gamemanager;
 	CYachtDiceDlg* m_pParentDlg;
 

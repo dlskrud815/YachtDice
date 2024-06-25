@@ -11,7 +11,7 @@
 IMPLEMENT_DYNCREATE(GamePlayDlg, CFormView)
 
 GamePlayDlg::GamePlayDlg()
-	: CFormView(IDD_GAME_PLAY_DIALOG)
+	: CFormView(IDD_GAME_PLAY_DIALOG), gamemanager(nullptr)
 {
 
 }
@@ -56,14 +56,6 @@ void GamePlayDlg::Dump(CDumpContext& dc) const
 // GamePlayDlg message handlers
 
 
-void GamePlayDlg::OnPaint()
-{
-	CPaintDC dc(this); // device context for painting
-	// TODO: Add your message handler code here
-	// Do not call CFormView::OnPaint() for painting messages
-}
-
-
 BOOL GamePlayDlg::Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext)
 {
 	// TODO: Add your specialized code here and/or call the base class
@@ -77,7 +69,26 @@ void GamePlayDlg::OnInitialUpdate()
 	CFormView::OnInitialUpdate();
 
 	// TODO: Add your specialized code here and/or call the base class
-	//m_player1.SetWindowTextW(this->gamemanager->GetUsername());
+	m_CImage.Load(_T("res\\background\\GAMEBOARD_BG.png"));
+}
+
+void GamePlayDlg::SetPlayer1Name()
+{
+	if (this->gamemanager != nullptr)
+	{
+		m_player1.SetWindowTextW(gamemanager->GetUsername());
+	}
+}
+
+void GamePlayDlg::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+	// TODO: Add your message handler code here
+	// Do not call CFormView::OnPaint() for painting messages
+	CRect rect;
+	GetClientRect(&rect);
+
+	m_CImage.StretchBlt(dc.m_hDC, 0, 0, rect.Width(), rect.Height(), SRCCOPY); // 이미지를 픽쳐 컨트롤 크기로 조정
 }
 
 
