@@ -2,6 +2,7 @@
 
 #include "GameManager.h"
 
+class CYachtDiceDlg;
 
 // GamePlayDlg form view
 
@@ -35,8 +36,14 @@ public:
 
 	void SetGameManager(GameManager* gamemanager);
 
+	void SetParentDlg(CYachtDiceDlg* pParentDlg);
+
 private:
-	GameManager gamemanager;
+	GameManager* gamemanager;
+	CYachtDiceDlg* m_pParentDlg;
+
+	CStatic m_player1;
+	CStatic m_player2;
 };
 
 

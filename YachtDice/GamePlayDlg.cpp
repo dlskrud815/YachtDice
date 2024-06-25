@@ -18,11 +18,17 @@ GamePlayDlg::GamePlayDlg()
 
 GamePlayDlg::~GamePlayDlg()
 {
+	if (gamemanager)
+	{
+		delete gamemanager; //메모리 해제
+	}
 }
 
 void GamePlayDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_TEXT_PLAYER1, m_player1);
+	DDX_Control(pDX, IDC_TEXT_PLAYER2, m_player2);
 }
 
 BEGIN_MESSAGE_MAP(GamePlayDlg, CFormView)
@@ -71,10 +77,16 @@ void GamePlayDlg::OnInitialUpdate()
 	CFormView::OnInitialUpdate();
 
 	// TODO: Add your specialized code here and/or call the base class
+	//m_player1.SetWindowTextW(this->gamemanager->GetUsername());
 }
 
 
 void GamePlayDlg::SetGameManager(GameManager* gamemanager)
 {
 	this->gamemanager = gamemanager;
+}
+
+void GamePlayDlg::SetParentDlg(CYachtDiceDlg* pParentDlg)
+{
+	m_pParentDlg = pParentDlg;
 }

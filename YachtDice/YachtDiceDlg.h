@@ -6,7 +6,7 @@
 
 #include "GameMainDlg.h"
 #include "GameSettingDlg.h"
-
+#include "GamePlayDlg.h"
 
 // CYachtDiceDlg dialog
 class CYachtDiceDlg : public CDialogEx
@@ -40,17 +40,20 @@ private:
 	CStatic m_DialogFrame;
 
 	GameMainDlg* m_GameMainDlg;
-	void AllocForm_GameMainDlg();
-
-
 	GameSettingDlg* m_GameSettingDlg;
+	GamePlayDlg* m_GamePlayDlg;
 
 public:
 	void AllocForm_GameSettingDlg();
+	void AllocForm_GameMainDlg();
+	void AllocForm_GamePlayDlg();
 
 	void ShowForm_GameMainDlg();
 	void HideForm_GameMainDlg();
 
 	void ShowForm_GameSettingDlg();
 	void HideForm_GameSettingDlg();
+
+	void ShowForm_GamePlayDlg();
+	void HideForm_GamePlayDlg();
 };

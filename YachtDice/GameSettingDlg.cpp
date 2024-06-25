@@ -109,13 +109,20 @@ void GameSettingDlg::OnBnClickedOkBtn()
 	
 	if (!m_username.IsEmpty())
 	{
-		GameManager gamemanager(m_radio);
+		GameManager* gamemanager = new GameManager(m_radio);
 
-		gamemanager.SetUsername(m_username);
-		gamemanager.SetRadio(m_radio);
+		gamemanager->SetUsername(m_username);
+		gamemanager->SetRadio(m_radio);
 
 		GamePlayDlg gamePlayDlg;
-		gamePlayDlg.SetGameManager(&gamemanager);
+		gamePlayDlg.SetGameManager(gamemanager);
+
+		if (m_pParentDlg)
+		{
+			m_pParentDlg->HideForm_GameSettingDlg();
+			m_pParentDlg->AllocForm_GameSettingDlg();
+			m_pParentDlg->ShowForm_GamePlayDlg();
+		}
 	}
 	else
 	{

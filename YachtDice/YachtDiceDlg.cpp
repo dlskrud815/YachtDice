@@ -105,6 +105,7 @@ BOOL CYachtDiceDlg::OnInitDialog()
 
 	AllocForm_GameMainDlg();
 	AllocForm_GameSettingDlg();
+	AllocForm_GamePlayDlg();
 
 	ShowForm_GameMainDlg();
 	
@@ -211,4 +212,30 @@ void CYachtDiceDlg::ShowForm_GameSettingDlg()
 void CYachtDiceDlg::HideForm_GameSettingDlg()
 {
 	m_GameSettingDlg->ShowWindow(SW_HIDE);
+}
+
+
+void CYachtDiceDlg::AllocForm_GamePlayDlg()
+{
+	CCreateContext context;
+	ZeroMemory(&context, sizeof(context));
+
+	CRect rectOfPanelArea;
+	m_DialogFrame.GetWindowRect(&rectOfPanelArea);
+	ScreenToClient(&rectOfPanelArea);
+
+	m_GamePlayDlg = new GamePlayDlg();
+	m_GamePlayDlg->Create(NULL, NULL, WS_CHILD | WS_VSCROLL | WS_HSCROLL, rectOfPanelArea, this, IDD_GAME_PLAY_DIALOG, &context);
+	m_GamePlayDlg->OnInitialUpdate();
+	m_GamePlayDlg->SetParentDlg(this);
+}
+
+void CYachtDiceDlg::ShowForm_GamePlayDlg()
+{
+	m_GamePlayDlg->ShowWindow(SW_SHOW);
+}
+
+void CYachtDiceDlg::HideForm_GamePlayDlg()
+{
+	m_GamePlayDlg->ShowWindow(SW_HIDE);
 }

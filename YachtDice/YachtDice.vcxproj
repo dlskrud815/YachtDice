@@ -187,7 +187,9 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameMainDlg.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GamePlayDlg.h" />
     <ClInclude Include="GameSettingDlg.h" />
+    <ClInclude Include="NetworkManager.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -197,6 +199,7 @@
   <ItemGroup>
     <ClCompile Include="CTransparentPNGButton.cpp" />
     <ClCompile Include="GameMainDlg.cpp" />
+    <ClCompile Include="GamePlayDlg.cpp" />
     <ClCompile Include="GameSettingDlg.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
