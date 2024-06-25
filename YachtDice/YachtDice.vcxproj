@@ -186,6 +186,7 @@
     <ClInclude Include="CTransparentPNGButton.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameMainDlg.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameSettingDlg.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />

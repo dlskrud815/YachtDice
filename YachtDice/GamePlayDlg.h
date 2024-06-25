@@ -2,21 +2,19 @@
 
 #include "GameManager.h"
 
-class CYachtDiceDlg;
 
+// GamePlayDlg form view
 
-// GameSettingDlg form view
-
-class GameSettingDlg : public CFormView
+class GamePlayDlg : public CFormView
 {
-	DECLARE_DYNCREATE(GameSettingDlg)
+	DECLARE_DYNCREATE(GamePlayDlg)
 
 public:
-	GameSettingDlg();
-	virtual ~GameSettingDlg();
+	GamePlayDlg();
+	virtual ~GamePlayDlg();
 
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_GAME_SETTING_DIALOG };
+	enum { IDD = IDD_GAME_PLAY_DIALOG };
 #endif
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -34,22 +32,11 @@ public:
 	afx_msg void OnPaint();
 	virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
 	virtual void OnInitialUpdate();
-	
-	afx_msg void OnBnClickedBackBtn();
-	afx_msg void OnBnClickedOkBtn();
-	afx_msg void OnBnClickedRadio(UINT id);
 
-	void SetParentDlg(CYachtDiceDlg* pParentDlg);
-	
+	void SetGameManager(GameManager* gamemanager);
+
 private:
-	CImage m_CImage;
-	CYachtDiceDlg* m_pParentDlg;
-	CEdit m_edit_username;
-
-	CString m_username;
-	CIPAddressCtrl m_serverIP;
-	int m_radio;
-	CButton m_default_radio;
+	GameManager gamemanager;
 };
 
 

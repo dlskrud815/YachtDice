@@ -9,18 +9,19 @@
 #define IDP_SOCKETS_INIT_FAILED         103
 #define IDD_GAME_MAIN_DIALOG            104
 #define IDD_GAME_SETTING_DIALOG         106
+#define IDD_GAME_PLAY_DIALOG            107
 #define IDR_MAINFRAME                   128
 #define IDI_DICE_ICON                   130
 #define IDB_START_BTN                   136
 #define IDC_MAIN_DIALOG_FRAME           1000
 #define IDC_START_BTN                   1001
-#define IDC_EDIT1                       1004
-#define IDC_RADIO1                      1005
-#define IDC_RADIO2                      1006
+#define IDC_INSERT_USERNAME             1003
+#define IDC_RADIO1                      1004
+#define IDC_RADIO2                      1005
+#define IDC_RADIO3                      1006
 #define IDC_IPADDRESS1                  1007
 #define IDC_BACK_BTN                    1008
 #define IDC_OK_BTN                      1009
-#define IDC_RADIO3                      1010
 
 // Next default values for new objects
 // 
@@ -29,6 +30,6 @@
 #define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1009
-#define _APS_NEXT_SYMED_VALUE           107
+#define _APS_NEXT_SYMED_VALUE           108
 #endif
 #endif

@@ -5,6 +5,7 @@
 #include "YachtDice.h"
 #include "GameSettingDlg.h"
 #include "YachtDiceDlg.h"
+#include "GamePlayDlg.h"
 
 // GameSettingDlg
 
@@ -24,11 +25,16 @@ GameSettingDlg::~GameSettingDlg()
 void GameSettingDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CFormView::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_INSERT_USERNAME, m_edit_username);
+	DDX_Control(pDX, IDC_IPADDRESS1, m_serverIP);
+	DDX_Control(pDX, IDC_RADIO1, m_default_radio);
 }
 
 BEGIN_MESSAGE_MAP(GameSettingDlg, CFormView)
 	ON_WM_PAINT()
 	ON_BN_CLICKED(IDC_BACK_BTN, &GameSettingDlg::OnBnClickedBackBtn)
+	ON_BN_CLICKED(IDC_OK_BTN, &GameSettingDlg::OnBnClickedOkBtn)
+	ON_CONTROL_RANGE(BN_CLICKED, IDC_RADIO1, IDC_RADIO3, &GameSettingDlg::OnBnClickedRadio)
 END_MESSAGE_MAP()
 
 
@@ -66,7 +72,9 @@ void GameSettingDlg::OnInitialUpdate()
 
 	// TODO: Add your specialized code here and/or call the base class
 
+	m_serverIP.ShowWindow(SW_HIDE);
 	m_CImage.Load(_T("res\\background\\BACKGROUND.png"));
+	m_default_radio.SetCheck(TRUE);
 }
 
 void GameSettingDlg::OnPaint()
@@ -91,4 +99,50 @@ void GameSettingDlg::OnBnClickedBackBtn()
 	m_pParentDlg->HideForm_GameSettingDlg();
 	m_pParentDlg->AllocForm_GameSettingDlg();
 	m_pParentDlg->ShowForm_GameMainDlg();
+}
+
+
+void GameSettingDlg::OnBnClickedOkBtn()
+{
+	// m_username = 사용자명, m_radio = 라디오 버튼
+	m_edit_username.GetWindowTextW(m_username);
+	
+	if (!m_username.IsEmpty())
+	{
+		GameManager gamemanager(m_radio);
+
+		gamemanager.SetUsername(m_username);
+		gamemanager.SetRadio(m_radio);
+
+		GamePlayDlg gamePlayDlg;
+		gamePlayDlg.SetGameManager(&gamemanager);
+	}
+	else
+	{
+		AfxMessageBox(_T("닉네임을 입력해주세요."));
+	}
+}
+
+afx_msg void GameSettingDlg::OnBnClickedRadio(UINT id)
+{
+	switch (id)
+	{
+	case IDC_RADIO1:
+		m_radio = 0;
+		m_serverIP.ShowWindow(SW_HIDE);
+		break;
+
+	case IDC_RADIO2:
+		m_radio = 1;
+		m_serverIP.ShowWindow(SW_HIDE);
+		break;
+
+	case IDC_RADIO3:
+		m_radio = 2;
+		m_serverIP.ShowWindow(SW_SHOW);
+		break;
+
+	default:
+		break;
+	}
 }
